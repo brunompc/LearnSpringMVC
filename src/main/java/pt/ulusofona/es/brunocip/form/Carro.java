@@ -50,4 +50,12 @@ public class Carro {
         return id;
     }
     
+    public int getPrecoCompra() {
+        return precoCompra;
+    }
+    
+    public int getPrecoMinimoVenda() {
+        return precoMinimoVenda;
+    }
+    
 }

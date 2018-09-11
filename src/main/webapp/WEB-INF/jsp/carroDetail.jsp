@@ -20,8 +20,8 @@
         Marca: ${carro.marca}<br />
         Modelo: ${carro.modelo}<br />
         Cilindrada: ${carro.cilindrada}<br />
-        Preco compra: <br />
-        Preco minimo:<br />
+        Preco compra: ${carro.precoCompra}<br />
+        Preco minimo (venda): ${carro.precoMinimoVenda}<br />
         
     </body>
 </html>
