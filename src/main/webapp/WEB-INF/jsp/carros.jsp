@@ -30,5 +30,6 @@
                 Lista Vazia.
             </c:otherwise>
         </c:choose>
+        <a href="novoCarro">Adicionar Carro</a>
     </body>
 </html>

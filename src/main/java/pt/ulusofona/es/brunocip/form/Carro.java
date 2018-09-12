@@ -1,28 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package pt.ulusofona.es.brunocip.form;
 
-/**
- *
- * @author user
- */
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class Carro {
     
     private static int counter = 0;
     private int id;
     
+    @NotEmpty(message="A marca tem de estar preenchida.")
     private String marca;
+    
+    @NotEmpty(message="O modelo tem de estar preenchido.")
     private String modelo;
+    
     private String matricula;
     private int cilindrada;
     
     private int precoCompra;
-    private int precoVendaMinimoLucro;
+    private int precoMinimoVenda;
     
-    public Carro(String marca, String matricula, int cilindrada) {
+    public Carro() {}
+    
+    public Carro(String marca, String modelo) {
+        this.marca = marca;
+        this.modelo = modelo;
+    }
+    
+    public Carro(String marca, String modelo, String matricula, int cilindrada) {
         this.marca = marca;
         this.matricula = matricula;
         this.cilindrada = cilindrada;
@@ -34,8 +39,16 @@ public class Carro {
         return marca;
     }
     
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+    
     public String getModelo() {
         return modelo;
+    }
+    
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
     }
     
     public String getMatricula() {
@@ -46,6 +59,10 @@ public class Carro {
         return cilindrada;
     }
     
+    public void setCilindrada(int cilindrada) {
+        this.cilindrada = cilindrada;
+    }
+    
     public int getId() {
         return id;
     }
@@ -54,8 +71,16 @@ public class Carro {
         return precoCompra;
     }
     
+    public void setPrecoCompra(int precoCompra) {
+        this.precoCompra = precoCompra;
+    }
+    
     public int getPrecoMinimoVenda() {
         return precoMinimoVenda;
+    }
+    
+    public void setPrecoMinimoVenda(int precoMinimoVenda) {
+        this.precoMinimoVenda = precoMinimoVenda;
     }
     
 }
