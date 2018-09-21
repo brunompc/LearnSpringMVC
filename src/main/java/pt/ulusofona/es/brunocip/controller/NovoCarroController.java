@@ -10,7 +10,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import pt.ulusofona.es.brunocip.form.Carro;
+import pt.ulusofona.es.brunocip.form.CarroForm;
+import pt.ulusofona.es.brunocip.data.Carro;
 
 @Controller
 public class NovoCarroController {
@@ -28,12 +29,12 @@ public class NovoCarroController {
     public String getForm(ModelMap model) {
         inicializarMarcas();
         model.put("marcas", marcas);
-        model.put("novoCarro", new Carro());
+        model.put("novoCarro", new CarroForm());
         return "novoCarro";
     }
     
     @RequestMapping(value="/novoCarro", method = RequestMethod.POST)
-    public String submitForm(@Valid @ModelAttribute("novoCarro") Carro novoCarro,
+    public String submitForm(@Valid @ModelAttribute("novoCarro") CarroForm novoCarro,
                              BindingResult bindingResult,
                              ModelMap model) {
         

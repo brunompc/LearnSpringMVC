@@ -3,7 +3,7 @@ package pt.ulusofona.es.brunocip.form;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class Carro {
+public class CarroForm {
     
     private static int counter = 0;
     private int id;
@@ -20,14 +20,14 @@ public class Carro {
     private int precoCompra;
     private int precoMinimoVenda;
     
-    public Carro() {}
+    public CarroForm() {}
     
-    public Carro(String marca, String modelo) {
+    public CarroForm(String marca, String modelo) {
         this.marca = marca;
         this.modelo = modelo;
     }
     
-    public Carro(String marca, String modelo, String matricula, int cilindrada) {
+    public CarroForm(String marca, String modelo, String matricula, int cilindrada) {
         this.marca = marca;
         this.matricula = matricula;
         this.cilindrada = cilindrada;

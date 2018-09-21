@@ -6,7 +6,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import pt.ulusofona.es.brunocip.form.Carro;
+import pt.ulusofona.es.brunocip.form.CarroForm;
 
 @Controller
 public class CarroDetailController {
@@ -16,7 +16,9 @@ public class CarroDetailController {
         
         System.out.println("ID: " + id);
         
-        Carro carro = new Carro("BMW", "XX-YY-ZZ", 1200); // for now
+        //CarroForm carro = new CarroForm("BMW", "Z3", "XX-YY-ZZ", 1200); // for now
+        
+        Carro carro = em.find(Carro.class, id);
         
         model.put("carro", carro);
         model.put("id", id);
