@@ -35,6 +35,6 @@
             </list>
         </property>
     </bean>
-        <property name="packagesToScan" value="pt.ulusofona.es.bruno.data"/>
+        <property name="packagesToScan" value="pt.ulusofona.es.brunocip.data"/>
 </beans>
 
