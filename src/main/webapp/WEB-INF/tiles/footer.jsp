@@ -1,6 +1,6 @@
 <hr />
 
-<a href="novoCarro">Adicionar carro</a> | <a href="carros">Listar carros</a>
+<a href="${pageContext.request.contextPath}/novoCarro">Adicionar carro</a> | <a href="${pageContext.request.contextPath}/carros">Listar carros</a>
 
 <br />
 by BC
