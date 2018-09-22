@@ -66,6 +66,12 @@
             <artifactId>hibernate-jpa-2.0-api</artifactId>
             <version>1.0.1.Final</version>
         </dependency>
+        <!-- use this for derby -->
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+            <version>10.10.1.1</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>forms-validation-spring-mvc</finalName>
