@@ -1,29 +1,35 @@
 
 package pt.ulusofona.es.brunocip.controller;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import pt.ulusofona.es.brunocip.form.CarroForm;
+import pt.ulusofona.es.brunocip.data.Carro;
 
 @Controller
 public class CarroDetailController {
     
+    @PersistenceContext
+    private EntityManager em;
+    
     @RequestMapping(value="/carroDetail/{id}", method = RequestMethod.GET)
-    public String getForm(ModelMap model, @PathVariable("id") Long id) {
+    public String getForm(ModelMap model, @PathVariable("id") Integer id) {
         
         System.out.println("ID: " + id);
-        
-        //CarroForm carro = new CarroForm("BMW", "Z3", "XX-YY-ZZ", 1200); // for now
-        
+
         Carro carro = em.find(Carro.class, id);
+
+        if(carro == null) {
+            // TODO: handle error
+            return "carros";
+        }
         
         model.put("carro", carro);
-        model.put("id", id);
-        
-        //return "novoCarro";
+
         return "carroDetail";
     }
     

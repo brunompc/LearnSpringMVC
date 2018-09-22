@@ -20,11 +20,22 @@ public class Carro implements Serializable {
     @Column(nullable = false)
     private Integer marca;
     
+    @Column(nullable = false)
+    private String modelo;
+    
+    @Column
+    private int cilindrada;
+    
     public Carro() {}
     
     public Carro(Integer id, String matricula) {
         this.id = id;
         this.matricula = matricula;
+    }
+    
+    @Override
+    public String toString() {
+        return marca + "|" + matricula  + "|" + id;
     }
     
     public Integer getId() {
@@ -43,11 +54,28 @@ public class Carro implements Serializable {
         this.matricula = matricula;
     }
     
-    public Integer getMarac() {
+    public Integer getMarca() {
         return marca;
     }
     
     public void setMarca(Integer marca) {
         this.marca = marca;
     }
+    
+    public String getModelo() {
+        return modelo;
+    }
+        
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+    
+    public int getCilindrada() {
+        return cilindrada;
+    }
+    
+    public void setCilindrada(int cilindrada) {
+        this.cilindrada = cilindrada;
+    }
+    
 }

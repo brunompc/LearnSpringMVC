@@ -55,6 +55,10 @@ public class CarroForm {
         return matricula;
     }
     
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+    
     public int getCilindrada() {
         return cilindrada;
     }

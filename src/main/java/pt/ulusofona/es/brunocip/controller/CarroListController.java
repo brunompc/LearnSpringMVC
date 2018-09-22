@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package pt.ulusofona.es.brunocip.controller;
 
 import java.util.ArrayList;
@@ -15,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pt.ulusofona.es.brunocip.data.Carro;
 import pt.ulusofona.es.brunocip.data.Marca;
-import pt.ulusofona.es.brunocip.form.CarroForm;
 
 @Controller
 public class CarroListController {

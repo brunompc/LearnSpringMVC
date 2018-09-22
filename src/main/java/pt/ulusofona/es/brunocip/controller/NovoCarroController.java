@@ -3,8 +3,11 @@ package pt.ulusofona.es.brunocip.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import pt.ulusofona.es.brunocip.form.CarroForm;
 import pt.ulusofona.es.brunocip.data.Carro;
 
+@Transactional
 @Controller
 public class NovoCarroController {
+    @PersistenceContext
+    private EntityManager em;
     
     ArrayList<String> marcas;
 
@@ -34,26 +40,37 @@ public class NovoCarroController {
     }
     
     @RequestMapping(value="/novoCarro", method = RequestMethod.POST)
-    public String submitForm(@Valid @ModelAttribute("novoCarro") CarroForm novoCarro,
+    public String submitForm(@Valid @ModelAttribute("novoCarro") CarroForm carFormData,
                              BindingResult bindingResult,
                              ModelMap model) {
         
-        System.out.println("#1 - Carro: " + novoCarro);
-        System.out.println("Modelo: " + novoCarro.getModelo());
-        System.out.println("Matricula: " + novoCarro.getMatricula());
-        System.out.println("Preco Compra: " + novoCarro.getPrecoCompra());
-        System.out.println("Preco Venda: " + novoCarro.getPrecoMinimoVenda());
+        System.out.println("#1 - Carro: " + carFormData);
+        System.out.println("Modelo: " + carFormData.getModelo());
+        System.out.println("Matricula: " + carFormData.getMatricula());
+        System.out.println("Preco Compra: " + carFormData.getPrecoCompra());
+        System.out.println("Preco Venda: " + carFormData.getPrecoMinimoVenda());
         
         System.out.println("#2 - hasErrors:" + bindingResult.hasErrors());
 
         if(bindingResult.hasErrors()) {
             inicializarMarcas();
             System.out.println("Nr Erros: " + bindingResult.getAllErrors().size());
+            System.out.println("Erros: ");
+            bindingResult.
+                    getAllErrors().
+                    forEach((e) -> System.out.println(e.getDefaultMessage()));
             model.put("marcas", marcas);
             return "novoCarro";
         }
         
-        return "carros";
+        Carro carro = new Carro();
+        carro.setMarca(1); // marca "dummy"
+        carro.setModelo(carFormData.getModelo());
+        carro.setCilindrada(carFormData.getCilindrada());
+        carro.setMatricula(carFormData.getMatricula());
+        em.persist(carro);
+        
+        return "/carros";
     }
     
 }
