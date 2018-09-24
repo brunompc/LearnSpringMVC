@@ -36,7 +36,7 @@
                     <form:errors path="matricula" cassClass="error"/>
 
                     Cilindrada<br />
-                    <input type="text" name="cilindrada" value="${carro.modelo}" /><br />
+                    <form:input path="cilindrada" value="${carro.cilindrada}" /><br />
 
                     Preco (compra)<br />
                     <input type="text" name="precoCompra" value="${carro.modelo}" /><br />
