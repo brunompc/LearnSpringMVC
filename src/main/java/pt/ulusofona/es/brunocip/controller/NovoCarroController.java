@@ -22,7 +22,7 @@ public class NovoCarroController {
     @PersistenceContext
     private EntityManager em;
     
-    ArrayList<String> marcas;
+    List<String> marcas;
 
     void inicializarMarcas() {
         marcas = new ArrayList<>();
@@ -44,14 +44,6 @@ public class NovoCarroController {
                              BindingResult bindingResult,
                              ModelMap model) {
         
-        System.out.println("#1 - Carro: " + carFormData);
-        System.out.println("Modelo: " + carFormData.getModelo());
-        System.out.println("Matricula: " + carFormData.getMatricula());
-        System.out.println("Preco Compra: " + carFormData.getPrecoCompra());
-        System.out.println("Preco Venda: " + carFormData.getPrecoMinimoVenda());
-        
-        System.out.println("#2 - hasErrors:" + bindingResult.hasErrors());
-
         if(bindingResult.hasErrors()) {
             inicializarMarcas();
             System.out.println("Nr Erros: " + bindingResult.getAllErrors().size());
@@ -64,7 +56,7 @@ public class NovoCarroController {
         }
         
         Carro carro = new Carro();
-        carro.setMarca(1); // marca "dummy"
+        carro.setMarca(1); // TODO: replace dummy value
         carro.setModelo(carFormData.getModelo());
         carro.setCilindrada(carFormData.getCilindrada());
         carro.setMatricula(carFormData.getMatricula());
