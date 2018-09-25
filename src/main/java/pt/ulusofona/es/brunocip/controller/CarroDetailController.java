@@ -24,8 +24,8 @@ public class CarroDetailController {
         Carro carro = em.find(Carro.class, id);
 
         if(carro == null) {
-            // TODO: handle error
-            return "carros";
+            model.put("ERROR_MESSAGE", "Erro: O registo com id " + id + " nao foi encontrado...");
+            return "carroDetail";
         }
         
         model.put("carro", carro);
